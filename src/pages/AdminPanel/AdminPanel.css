@@ -1,0 +1,330 @@
+.admin-controls-panel,
+.admin-controls-panel *,
+.admin-controls-panel *::before,
+.admin-controls-panel *::after {
+    box-sizing: border-box;
+}
+
+.admin-controls-panel {
+    display: flex;
+    gap: 3rem;
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-controls-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), #6366f1);
+}
+
+.admin-sidebar {
+    flex: 0 0 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    border-right: 1px solid var(--border);
+    padding-right: 2.5rem;
+    overflow: hidden;
+}
+
+.add-form-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.add-form-vertical input,
+.add-form-vertical textarea,
+.admin-input,
+.admin-select,
+.admin-date-input {
+    width: 100%;
+    max-width: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border);
+    padding: 0.8rem 1rem;
+    border-radius: 0.75rem;
+    color: white;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.add-form-vertical input:focus,
+.admin-input:focus,
+.admin-date-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.admin-input::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+.admin-input[list]:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+datalist {
+    background-color: var(--bg-card);
+    color: white;
+}
+
+.desc-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.input-with-hint {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.user-hint {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(30, 41, 59, 0.4);
+    min-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-hint.found {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid #10b981;
+    transform: translateX(4px);
+}
+
+.user-hint.not-found {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid #ef4444;
+}
+
+.admin-date-input {
+    color-scheme: dark;
+}
+
+.admin-date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.admin-issue-section {
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border);
+    width: 100%;
+}
+
+.btn-add-submit,
+.btn-issue-submit {
+    width: 100%;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.btn-add-submit {
+    background: var(--primary);
+}
+
+.btn-issue-submit {
+    background: #059669;
+}
+
+.btn-add-submit:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-issue-submit:hover {
+    background: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-cancel {
+    background-color: transparent;
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-cancel:hover {
+    background-color: #ff4d4f;
+    color: #ffffff;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn-import-json {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background-color: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.btn-import-json:hover {
+    background-color: rgba(74, 144, 226, 0.2);
+    border-color: #4a90e2;
+}
+
+.btn-import-json:active {
+    background-color: rgba(74, 144, 226, 0.3);
+}
+
+.admin-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.admin-preview-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.preview-card {
+    border: 2px dashed var(--border) !important;
+    background: transparent !important;
+    opacity: 0.6;
+    pointer-events: none;
+    width: 100%;
+    max-width: 300px;
+}
+
+.quantity-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.quantity-label {
+    font-size: 0.82rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--border, #334155);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.qty-btn {
+    background: rgba(15, 23, 42, 0.4);
+    border: none;
+    color: var(--text-main, #f8fafc);
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+}
+
+.qty-btn:hover {
+    background: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+}
+
+.qty-input {
+    width: 56px !important;
+    border: none !important;
+    border-left: 1px solid var(--border, #334155) !important;
+    border-right: 1px solid var(--border, #334155) !important;
+    border-radius: 0 !important;
+    text-align: center;
+    padding: 0.5rem 0 !important;
+    font-size: 0.95rem;
+}
+
+.qty-input::-webkit-inner-spin-button,
+.qty-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.qty-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2rem;
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--text-muted, #94a3b8);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+    .admin-controls-panel {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 2rem;
+        width: 100%;
+    }
+}

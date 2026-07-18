@@ -1,0 +1,429 @@
+/* ── ReadersManagement ──────────────────────────────────────── */
+
+.readers-mgmt-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Header */
+.readers-mgmt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.readers-mgmt-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.readers-count-badge {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* Search */
+.readers-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.readers-search-bar:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.readers-search-icon {
+  font-size: 1rem;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.readers-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+.readers-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* List */
+.readers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Card */
+.reader-mgmt-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 16px 20px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  animation: fadeUp 0.25s ease both;
+}
+
+.reader-mgmt-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.reader-mgmt-card.blocked {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.04);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Top row */
+.reader-mgmt-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.reader-mgmt-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 2px;
+}
+
+.reader-mgmt-username {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Stats row */
+.reader-mgmt-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.reader-stat {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.reader-stat-value {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.reader-stat-value.danger {
+  color: #f87171;
+}
+
+/* Blocked badge */
+.blocked-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  vertical-align: middle;
+}
+
+/* Action buttons */
+.reader-mgmt-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-edit-reader,
+.btn-block-reader,
+.btn-delete-reader {
+  padding: 7px 16px;
+  border-radius: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-edit-reader {
+  background: rgba(37, 99, 235, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+.btn-edit-reader:hover {
+  background: rgba(37, 99, 235, 0.22);
+}
+
+.btn-block-reader {
+  background: rgba(234, 179, 8, 0.10);
+  color: #fbbf24;
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+.btn-block-reader:hover:not(:disabled) {
+  background: rgba(234, 179, 8, 0.20);
+}
+
+.btn-delete-reader {
+  background: rgba(239, 68, 68, 0.10);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+.btn-delete-reader:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.20);
+}
+
+.btn-edit-reader:disabled,
+.btn-block-reader:disabled,
+.btn-delete-reader:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Inline edit form */
+.reader-edit-form {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 16px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeUp 0.2s ease both;
+}
+
+.edit-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.edit-form-group {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-form-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.edit-form-input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  color: white;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.edit-form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Remove number input spinners */
+.edit-form-input[type="number"]::-webkit-inner-spin-button,
+.edit-form-input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.4;
+}
+
+.edit-form-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-save-edit {
+  padding: 8px 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.btn-save-edit:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+.btn-save-edit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel-edit {
+  padding: 8px 20px;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-cancel-edit:hover {
+  border-color: #475569;
+  color: var(--text-main);
+}
+
+.btn-view-reservations {
+  padding: 7px 16px;
+  border-radius: 0.6rem;
+  background: rgba(37, 99, 235, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-view-reservations:hover {
+  background: rgba(37, 99, 235, 0.2);
+}
+
+.btn-cancel-reservation {
+  padding: 6px 12px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s, opacity 0.2s;
+}
+.btn-cancel-reservation:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.18);
+}
+.btn-cancel-reservation:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reservation-title {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.reader-reservation-list {
+  margin-top: 14px;
+  padding: 14px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+}
+
+.reservation-list-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.reservation-loading,
+.reservation-empty {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.reservation-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.reservation-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.8rem;
+}
+
+.reservation-status {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+/* Password section */
+.password-section {
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.password-section-title {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+/* Empty */
+.empty-readers {
+  text-align: center;
+  padding: 4rem 24px;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .readers-mgmt-page {
+    padding: 1.5rem 0;
+  }
+  .reader-mgmt-stats {
+    gap: 12px;
+  }
+  .reader-mgmt-card {
+    padding: 14px 16px;
+  }
+  .edit-form-group {
+    min-width: 100%;
+  }
+}
