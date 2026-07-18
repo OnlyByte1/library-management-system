@@ -27,20 +27,20 @@
 ## 🚀 Как запустить проект локально
 
 ### 1. Клонирование репозитория
-git clone [https://github.com/OnlyByte1/library-management-system.git](https://github.com/OnlyByte1/library-management-system.git)
-cd library-management-system
+`git clone [https://github.com/OnlyByte1/library-management-system.git](https://github.com/OnlyByte1/library-management-system.git)`
+`cd library-management-system`
 
 ### 2. Запуск серверной части (Backend)
 Перейдите в папку с сервером, установите зависимости и запустите его:
-cd server
-npm install
-npm run dev
+`cd server`
+`npm install`
+`npm run dev`
 
 3. Запуск клиентской части (Frontend)
 В новом окне терминала вернитесь в корень проекта, установите зависимости фронтенда и запустите Vite-сервер:
 
 # Если вы находитесь в папке server, сначала вернитесь назад: cd ..
-npm install
-npm run dev
+`npm install`
+`npm run dev`
 
 После этого клиентская часть откроется в браузере по адресу http://localhost:5173.
